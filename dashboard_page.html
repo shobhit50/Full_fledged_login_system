@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard">
+
+        <h2>Welcome to the Dashboard</h2>
+        <p>Hello, <span id="name"></span></p>
+
+        <a href="index.html" class="btn">Logout</a>
+    </div>
+    <script>
+        const usernameSpan = document.getElementById('name');
+        const nameuser = sessionStorage.getItem("newUsername");
+        usernameSpan.textContent = nameuser.toUpperCase();
+
+    </script>
+</body>
+
+</html>

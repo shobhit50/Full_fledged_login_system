@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="register-box">
+        <h2>Register</h2>
+        <form id="register-form">
+            <div class="textbox">
+                <input type="text" placeholder="New Username" id="new-username" required>
+            </div>
+            <div class="textbox">
+                <input type="password" placeholder="New Password" id="new-password" required>
+            </div>
+            <div class="textbox">
+                <input type="password" placeholder="Confirm Password" id="confirm-password" required>
+            </div>
+            <input type="checkbox" id="show-password"> Show Password
+            <input type="submit" class="btn" value="Register">
+        </form>
+    </div>
+    <script>
+
+        document.getElementById("register-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Get user input
+            var newUsername = document.getElementById("new-username").value;
+            var newPassword = document.getElementById("new-password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            // Check if the passwords match
+            if (newPassword !== confirmPassword) {
+                document.getElementById("error-message").textContent = "Passwords do not match.";
+                return;
+            }
+            // Store the new user credentials (for demonstration purposes)
+            sessionStorage.setItem("newUsername", newUsername);
+            sessionStorage.setItem("newPassword", newPassword);
+            window.location.href = "index.html";
+            alert("Registration successful! You are now being redirected to the dashboard.");
+        });
+        var showPasswordCheckbox = document.getElementById("show-password");
+        var newPasswordInput = document.getElementById("new-password");
+        var confirmPasswordInput = document.getElementById("confirm-password");
+
+        showPasswordCheckbox.addEventListener("change", function () {
+            if (showPasswordCheckbox.checked) {
+                newPasswordInput.type = "text";
+                confirmPasswordInput.type = "text";
+            } else {
+                newPasswordInput.type = "password";
+                confirmPasswordInput.type = "password";
+            }
+        });
+    </script>
+</body>
+
+</html>
